@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   /* Background */
   --bg: #080808;
@@ -47,6 +48,10 @@ body {
   color: var(--text);
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /*     <!-- ===============Navbar================ --> */
@@ -1360,6 +1365,9 @@ h3 {
 
   .project-body h3 {
     font-size: 1.6rem;
+  }
+  #footer {
+    margin-top: 100px;
   }
 }
 

@@ -91,7 +91,11 @@ function scrollReveal() {
 window.addEventListener("scroll", scrollReveal);
 scrollReveal();
 
-document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+// =========================
+// Smooth Scroll Navigation
+// =========================
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", function (e) {
     const targetId = this.getAttribute("href");
     const target = document.querySelector(targetId);
@@ -100,13 +104,9 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
 
     e.preventDefault();
 
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-
-    window.scrollTo({
-      top: targetPosition,
+    target.scrollIntoView({
       behavior: "smooth",
+      block: "start",
     });
-
-    history.pushState(null, "", targetId);
   });
 });

@@ -50,10 +50,6 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
 /*     <!-- ===============Navbar================ --> */
 .mobile-nav {
   display: none;

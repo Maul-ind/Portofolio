@@ -92,7 +92,7 @@ window.addEventListener("scroll", scrollReveal);
 scrollReveal();
 
 // =========================
-// Smooth Scroll Navigation
+// Custom Smooth Scroll
 // =========================
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -104,9 +104,32 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
     e.preventDefault();
 
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    const startPosition = window.scrollY;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+
+    const distance = targetPosition - startPosition;
+    const duration = 800;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (!startTime) startTime = currentTime;
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Ease in-out
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+      window.scrollTo(0, startPosition + distance * ease);
+
+      if (progress < 1) {
+        requestAnimationFrame(animation);
+      }
+    }
+
+    requestAnimationFrame(animation);
   });
 });

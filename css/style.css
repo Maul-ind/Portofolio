@@ -41,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth;
 }
 
 body {
@@ -1096,6 +1097,9 @@ h3 {
 @media screen and (max-width: 850px) {
   .dekstop-nav {
     display: none;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 
   .mobile-nav {

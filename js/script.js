@@ -90,3 +90,23 @@ function scrollReveal() {
 
 window.addEventListener("scroll", scrollReveal);
 scrollReveal();
+
+document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    const target = document.querySelector(targetId);
+
+    if (!target) return;
+
+    e.preventDefault();
+
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+
+    history.pushState(null, "", targetId);
+  });
+});
